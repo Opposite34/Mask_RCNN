@@ -15,9 +15,11 @@ import colorsys
 
 import numpy as np
 from skimage.measure import find_contours
+
 import matplotlib.pyplot as plt
-from matplotlib import patches,  lines
+from matplotlib import patches,  lines, use
 from matplotlib.patches import Polygon
+matplotlib.use('TkAgg')
 
 from bs4 import BeautifulSoup as bsoup
 # import IPython.display
