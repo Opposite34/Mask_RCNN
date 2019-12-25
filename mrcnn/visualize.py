@@ -12,6 +12,7 @@ import sys
 import random
 import itertools
 import colorsys
+import tkinter
 
 import numpy as np
 from skimage.measure import find_contours
@@ -19,7 +20,6 @@ from skimage.measure import find_contours
 import matplotlib.pyplot as plt
 from matplotlib import patches,  lines, use
 from matplotlib.patches import Polygon
-matplotlib.use('TkAgg')
 
 from bs4 import BeautifulSoup as bsoup
 # import IPython.display
@@ -46,6 +46,8 @@ def display_images(images, titles=None, cols=4, cmap=None, norm=None,
     norm: Optional. A Normalize instance to map values to colors.
     interpolation: Optional. Image interpolation to use for display.
     """
+    use('TkAgg')
+
     titles = titles if titles is not None else [""] * len(images)
     rows = len(images) // cols + 1
     plt.figure(figsize=(14, 14 * rows // cols))
@@ -101,6 +103,8 @@ def display_instances(image, boxes, masks, class_ids, class_names,
     colors: (optional) An array or colors to use with each object
     captions: (optional) A list of strings to use as captions for each object
     """
+    use('TkAgg')
+
     # Number of instances
     N = boxes.shape[0]
     if not N:
@@ -214,6 +218,7 @@ def draw_rois(image, rois, refined_rois, mask, class_ids, class_names, limit=10)
     anchors: [n, (y1, x1, y2, x2)] list of anchors in image coordinates.
     proposals: [n, 4] the same anchors but refined to fit objects better.
     """
+    use('TkAgg')
     masked_image = image.copy()
 
     # Pick random anchors in case there are too many.
@@ -313,6 +318,8 @@ def plot_precision_recall(AP, precisions, recalls):
     precisions: list of precision values
     recalls: list of recall values
     """
+    use('TkAgg')
+
     # Plot the Precision-Recall curve
     _, ax = plt.subplots(1)
     ax.set_title("Precision-Recall Curve. AP@50 = {:.3f}".format(AP))
@@ -331,6 +338,7 @@ def plot_overlaps(gt_class_ids, pred_class_ids, pred_scores,
     class_names: list of all class names in the dataset
     threshold: Float. The prediction probability required to predict a class
     """
+    use('TkAgg')
     gt_class_ids = gt_class_ids[gt_class_ids != 0]
     pred_class_ids = pred_class_ids[pred_class_ids != 0]
 
@@ -376,6 +384,8 @@ def draw_boxes(image, boxes=None, refined_boxes=None,
     title: An optional title to show over the image
     ax: (optional) Matplotlib axis to draw on.
     """
+    use('TkAgg')
+
     # Number of boxes
     assert boxes is not None or refined_boxes is not None
     N = boxes.shape[0] if boxes is not None else refined_boxes.shape[0]
