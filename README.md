@@ -1,4 +1,4 @@
-This is a forked of matterport's Mask_RCNN. I intended for this to be used with tensorflow1-compatible mode for tensorflow2.
+This is a fork of matterport's Mask_RCNN. I intended for this to be used with tensorflow1-compatible mode for tensorflow2.
 Also, I tried my best to remove IPython as I'm not intended to use jupyter notebook in my project.
 
 # Mask R-CNN for Object Detection and Segmentation
